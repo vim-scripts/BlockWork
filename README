@@ -1,0 +1,46 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=821
+
+Function to Work with Selected Blocks --
+Includes vmap assignments for incrementing, decrementing, and re-sequencing integers in a selected block.
+
+Purpose:
+Simplifies editing numbered lists or other sequences of numbers.  
+Includes function to apply most any command to a selected 'visual block' of text.
+
+Justification:
+Vim includes CTRL-A and CTRL-X to add and subtract from integers under the cursor, however neither of these works on selections.
+There are search and replace techniques to handle multiple changes on a range of lines (e.g. s/-\?\d\+/\=submatch(0)+1/g').
+However, this won't work on a 'visual block' selection.
+
+Example:
+The first item was deleted from the following list,
+and you want to decrement all the numbers by 1.
+     2) show 35
+     3) show 19
+     4) show 85
+     ...
+   134) show 12
+Using this plugin, you would position the cursor on the 2, 
+select the column of numbers, and decrement -- i.e. type:
+   <C-V>132jb<C-X> 
+(where <C-V> and <C-X> are CTRL-V and CTRL-X respectively)
+
+Re-sequencing (To Automatically Correct A Sequence):
+There is also a feature to re-sequence a selection of numbers (automatically eliminating all missing numbers).  Note that I've mapped the re-sequence function to <M-S-A> and <M-S-X>  (that's Alt plus Shift and A or X).  (The functional interface within the script allows easy adaptation for other scripters.)
+
+Issues and challenges with the techniques employed are discussed in the file.
+
+---
+2005-09-02: When I created this, I had imagined that I would update it a some point, but 
+it has served me well since I had created it.  I mostly use this script to re-sequence numbers.
+
+Note that there are now at least four scripts that perform this functionality.
+vimscript #670 - visincr.vim - Charles E Campbell (along with vimtip #150, handles dates!!!)
+vimscript #145 - increment.vim - Stanislav Sitar
+vimscript #156 - increment.vim - Srinath Avadhanula
+vimscript #842 - increment.vim - William Natter (sequences on a substitution character)
+vimscript #189 - renumber.vim - Neil Bird (only re-sequences, but handles hex)
+vimscript #821 - blockwork.vim - John Aldridge
+vimscript #1046 - monday.vim - Stefan Karlsson (increments month and weekday names)
+
+Speak up if there are others.
